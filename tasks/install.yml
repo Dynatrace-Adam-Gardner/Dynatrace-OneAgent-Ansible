@@ -4,14 +4,14 @@
     oneagent_install_params: "--set-host-group={{ dynatrace_oneagent_host_group | default('uncategorised')}} {{ dynatrace_oneagent_host_properties | join(' ') | default('') }}"
   register: oneagent_install_param
 
-- name: Print oneagent_install_param
-  debug: msg="{{ oneagent_install_param }}"
+- name: Print oneagent_install_params
+  debug: msg="{{ oneagent_install_params }}"
 
 - name: Print oneagent_install_cmd
   debug: msg="{{ dynatrace_oneagent_install_cmd }}"
   
 - name: Print installer line
-  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ ansible_facts.oneagent_install_params }}"
+  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_params }}"
   
 #- name: set install params
 #  set_fact:
