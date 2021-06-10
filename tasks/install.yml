@@ -11,7 +11,7 @@
   debug: msg="{{ dynatrace_oneagent_install_cmd }}"
   
 - name: Print installer line
-  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param | map(attribute='ansible_facts.oneagent_install_params') }}"
+  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ ansible_facts.oneagent_install_params }}"
   
 #- name: set install params
 #  set_fact:
@@ -19,7 +19,7 @@
 #  register: oneagent_install_param
 
 - name: install dynatrace oneagent | linux
-  command: "{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param | map(attribute='ansible_facts.oneagent_install_params') }}"
+  command: "{{ dynatrace_oneagent_install_cmd }} {{ ansible_facts.oneagent_install_params }}"
   args:
     creates: "{{ dynatrace_oneagent_install_artifact }}"
   when: ansible_system|lower == "linux" and dynatrace_oneagent_package_state != "absent"
