@@ -6,9 +6,12 @@
 
 - name: Print oneagent_install_param
   debug: msg="{{ oneagent_install_param }}"
+
+- name: Print oneagent_install_cmd
+  debug: msg="{{ dynatrace_oneagent_install_cmd }}"
   
 - name: Print installer line
-  debug: message="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param | join(' ') }}"
+  debug: message="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param }}"
   
 #- name: set install params
 #  set_fact:
