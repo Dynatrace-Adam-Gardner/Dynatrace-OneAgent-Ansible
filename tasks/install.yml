@@ -11,7 +11,7 @@
   debug: msg="{{ dynatrace_oneagent_install_cmd }}"
   
 - name: Print installer line
-  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param }}"
+  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param.results | map(attribute='ansible_facts.oneagent_install_params') }}"
   
 #- name: set install params
 #  set_fact:
