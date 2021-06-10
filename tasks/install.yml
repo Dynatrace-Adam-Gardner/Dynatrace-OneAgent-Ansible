@@ -3,6 +3,12 @@
   set_fact:
     oneagent_install_params: "--set-host-group={{ dynatrace_oneagent_host_group | default('uncategorised')}} {{ dynatrace_oneagent_host_properties | join(' ') | default('') }}"
   register: oneagent_install_param
+
+- name: Print oneagent_install_param
+  debug: msg="{{ oneagent_install_param }}"
+  
+- name: Print installer line
+  debug: message="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param | join(' ') }}"
   
 #- name: set install params
 #  set_fact:
