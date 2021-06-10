@@ -1,8 +1,13 @@
 ---
 - name: set install params
   set_fact:
-    oneagent_install_params: "{{ dynatrace_oneagent_install_args }}"
+    oneagent_install_params: "--set-host-group={{ dynatrace_oneagent_host_group | default('uncategorised')}} {{ dynatrace_oneagent_host_properties | default('') }}"
   register: oneagent_install_param
+  
+#- name: set install params
+#  set_fact:
+#    oneagent_install_params: "{{ dynatrace_oneagent_install_args }}"
+#  register: oneagent_install_param
 
 - name: install dynatrace oneagent | linux
   command: "{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_param | join(' ') }}"
