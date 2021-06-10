@@ -1,8 +1,7 @@
 ---
 - name: set install params
   set_fact:
-    oneagent_install_params: "{{ item.key }}={{ item.value }}"
-  with_dict: "{{ dynatrace_oneagent_install_args }}"
+    oneagent_install_params: "{{ dynatrace_oneagent_install_args }}"
   register: oneagent_install_param
 
 - name: install dynatrace oneagent | linux
