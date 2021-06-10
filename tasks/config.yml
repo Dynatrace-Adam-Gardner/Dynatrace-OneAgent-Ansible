@@ -1,7 +1,6 @@
 ---
-- name: Print oneagentctl commands (debug)
-    debug:
-      msg="{{ dynatrace_onagentctl_linux }}"
+- debug:
+    msg: "{{ dynatrace_onagentctl_linux }}"
   when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "linux"
 
 #- name: Set host properties (linux)
