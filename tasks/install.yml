@@ -4,20 +4,6 @@
     oneagent_install_params: "--set-host-group={{ dynatrace_oneagent_host_group | default('uncategorised')}} {{ dynatrace_oneagent_host_properties | join(' ') | default('') }}"
   register: oneagent_install_param
 
-- name: Print oneagent_install_params
-  debug: msg="{{ oneagent_install_params }}"
-
-- name: Print oneagent_install_cmd
-  debug: msg="{{ dynatrace_oneagent_install_cmd }}"
-  
-- name: Print installer line
-  debug: msg="{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_params }}"
-  
-#- name: set install params
-#  set_fact:
-#    oneagent_install_params: "{{ dynatrace_oneagent_install_args }}"
-#  register: oneagent_install_param
-
 - name: install dynatrace oneagent | linux
   command: "{{ dynatrace_oneagent_install_cmd }} {{ oneagent_install_params }}"
   args:
@@ -34,6 +20,6 @@
   win_package:
     path: "{{ dynatrace_oneagent_install_script }}"
     creates_service: "{{ dynatrace_oneagent_service_name }}"
-    arguments: "{{ oneagent_install_param }} --quiet"
+    arguments: "{{ oneagent_install_params }} --quiet"
     state: "{{ dynatrace_oneagent_package_state }}"
   when: ansible_system|lower == "win32nt"
