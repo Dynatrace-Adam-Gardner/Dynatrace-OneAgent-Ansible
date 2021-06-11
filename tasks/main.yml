@@ -33,5 +33,5 @@
   win_service:
     name: "{{ dynatrace_oneagent_service_name }}"
     state: "{{ dynatrace_oneagent_state }}"
-    enabled: true
+    start_mode: auto
   when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "win32nt"
