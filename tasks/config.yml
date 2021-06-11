@@ -7,7 +7,7 @@
     msg: "{{ dynatrace_oneagentctl_windows }}"
   
 - name: Set host properties (windows)
-  ansible.windows.win_command: "oneagentctl.exe"
+  ansible.windows.win_command: "oneagentctl.exe {{ oneagent_install_params }} --restart-service"
   args:
     chdir: "{{ dynatrace_oneagent_install_args.INSTALL_PATH | default(windows_default_install_dir) }}\\agent\\tools"
   when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "win32nt" and dynatrace_oneagent_state_file_windows.stat.exists
