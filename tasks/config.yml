@@ -8,7 +8,7 @@
   
 - name: Set host properties (windows)
   ansible.builtin.command: "{{ dynatrace_onagentctl_windows }} {{ oneagent_install_params }}"
-  when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "win32nt" and dynatrace_oneagent_state_file_linux.stat.exists
+  when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "win32nt" and dynatrace_oneagent_state_file_windows.stat.exists
     
  # - name: create/update hostautotag.conf file | Linux
  #   copy:
