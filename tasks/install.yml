@@ -1,6 +1,4 @@
 ---
-- debug:
-  msg: "Install Directory is: {{ dynatrace_oneagent_install_dir }}"
   
 - name: set install params
   set_fact:
