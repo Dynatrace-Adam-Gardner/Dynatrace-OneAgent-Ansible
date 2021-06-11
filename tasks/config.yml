@@ -1,7 +1,7 @@
 ---
 - name: Set host properties (linux)
   ansible.builtin.command: "{{ dynatrace_onagentctl_linux }} {{ oneagent_install_params }}"
-  when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "linux" and and dynatrace_oneagent_state_file_linux.stat.exists
+  when: dynatrace_oneagent_package_state != "absent" and ansible_system|lower == "linux" and dynatrace_oneagent_state_file_linux.stat.exists
 
 - debug:
   msg: "{{ dynatrace_onagentctl_windows }} {{ oneagent_install_params }}"
