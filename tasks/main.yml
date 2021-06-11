@@ -4,16 +4,16 @@
     msg: "One or more required variables are not defined. Please see documentation for further information."
   when: not dynatrace_environment_url or not dynatrace_paas_token
 
-- name: Print Installation Directory and System Type
-  ansible.builtin.debug:
-    msg: "Install Directory is: {{ dynatrace_oneagent_install_dir }}. System is: {{ ansible_system | lower }}"
-
 - name: load default variables based on OS
   include_vars: "defaults/main/{{ ansible_system | lower }}.yml"
 
 - name: load variables based on OS
   include_vars: "vars/{{ ansible_system | lower }}.yml"
 
+- name: Print Installation Directory and System Type
+  ansible.builtin.debug:
+    msg: "Install Directory is: {{ dynatrace_oneagent_install_dir }}. System is: {{ ansible_system | lower }}"
+    
 - name: download dynatrace oneagent
   include_tasks: "tasks/download.yml"
 
