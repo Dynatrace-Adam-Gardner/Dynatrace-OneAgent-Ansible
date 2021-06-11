@@ -4,7 +4,7 @@
     msg: "One or more required variables are not defined. Please see documentation for further information."
   when: not dynatrace_environment_url or not dynatrace_paas_token
 
-- name: Print the gateway for each host when defined
+- name: Print Installation Directory and System Type
   ansible.builtin.debug:
     msg: "Install Directory is: {{ dynatrace_oneagent_install_dir }}. System is: {{ ansible_system | lower }}"
 
